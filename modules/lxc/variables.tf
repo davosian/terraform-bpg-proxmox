@@ -111,9 +111,9 @@ variable "disk_size" {
 
 variable "mountpoint" {
   type = list(object({
-    mp_volume    = optional(string, "local-lvm")
-    mp_size      = optional(string, "4G")
-    mp_path      = optional(string, "/mnt/local")
+    mp_volume    = optional(string, null)
+    mp_size      = optional(number, null)
+    mp_path      = optional(string, null)
     mp_backup    = optional(bool, false)
     mp_read_only = optional(bool, false)
     }
@@ -136,8 +136,8 @@ variable "vnic_bridge" {
 
 variable "vlan_tag" {
   description = "Networking adapter VLAN tag."
-  type        = string
-  default     = "1"
+  type        = number
+  default     = null
 }
 
 variable "ipv4" {
